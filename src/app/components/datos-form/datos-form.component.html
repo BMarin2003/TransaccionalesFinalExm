@@ -42,6 +42,14 @@
             <div *ngIf="loginErrorMessage" class="error-message">
                 {{ loginErrorMessage }}
             </div>
+
+            <div *ngIf="salaryResult" class="results">
+                <h2>Resultados</h2>
+                <p>Salario Regular: {{ salaryResult.regularSalary | currency }}</p>
+                <p>Salario por Horas Extras: {{ salaryResult.overtimeSalary | currency }}</p>
+                <p>Deducciones: {{ salaryResult.deductions | currency }}</p>
+                <p>Salario Neto: {{ salaryResult.netSalary | currency }}</p>
+            </div>
         </form>
     </section>
 </div>
