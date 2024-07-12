@@ -26,7 +26,6 @@ export class DatosFormComponent {
     private fb: FormBuilder,
     private calcSalaryService: CalcSalaryService
   ) {
-    // Inyectar el servicio
     this.employeeForm = this.fb.group({
       name: ['', Validators.required],
       hourlyWage: [
