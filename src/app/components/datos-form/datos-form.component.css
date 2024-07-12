@@ -1,7 +1,7 @@
 .datos-form {
   max-width: 600px;
-  margin-top: 15%;
-  margin-inline: 25%;
+  margin: 0 auto;
+  margin-top: 5%;
 }
 
 .llenar {
@@ -17,7 +17,7 @@
   margin-bottom: 5px;
 }
 
-.formfield input {
+input {
   width: 100%;
   padding: 10px;
   font-size: 16px;
