@@ -27,7 +27,7 @@
   text-align: center;
 }
 
-.buttonmenu .login {
+button {
   padding: 10px 20px;
   font-size: 16px;
 }

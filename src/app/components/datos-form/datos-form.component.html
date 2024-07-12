@@ -36,19 +36,11 @@
             </div>
 
             <div class="buttonmenu">
-                <button type="submit" class="login" [disabled]="employeeForm.invalid">Enviar</button>
+                <button type="submit" [disabled]="employeeForm.invalid">Enviar</button>
             </div>
 
             <div *ngIf="loginErrorMessage" class="error-message">
                 {{ loginErrorMessage }}
-            </div>
-
-            <div *ngIf="salaryResult" class="results">
-                <h2>Resultados del Cálculo del Salario</h2>
-                <p>Salario Regular: {{ salaryResult.regularSalary | currency }}</p>
-                <p>Salario por Horas Extras: {{ salaryResult.overtimeSalary | currency }}</p>
-                <p>Deducciones: {{ salaryResult.deductions | currency }}</p>
-                <p>Salario Neto: {{ salaryResult.netSalary | currency }}</p>
             </div>
         </form>
     </section>

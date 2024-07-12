@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { SalaryCalculationResponse } from '../../models/salary-calculation-response';
 import { SalaryCalculationRequest } from '../../models/salary-calculation-request';
+import { CalcSalaryService } from '../../services/calc-salary.service';
 
 @Component({
   selector: 'app-datos-form',
@@ -21,7 +22,11 @@ export class DatosFormComponent {
   salaryResult: SalaryCalculationResponse | null = null;
   loginErrorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private calcSalaryService: CalcSalaryService
+  ) {
+    // Inyectar el servicio
     this.employeeForm = this.fb.group({
       name: ['', Validators.required],
       hourlyWage: [
@@ -50,6 +55,7 @@ export class DatosFormComponent {
         overtimeHours: parseInt(formValue.overtimeHours, 10),
       };
 
+      this.salaryResult = this.calcSalaryService.calculateSalary(request);
       this.loginErrorMessage = null;
     } else {
       this.loginErrorMessage = 'Please fill in all required fields correctly.';
