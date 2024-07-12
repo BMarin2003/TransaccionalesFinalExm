@@ -1,20 +1,20 @@
 <div class="body">
     <section class="datos-form">
-        <form>
+        <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
             <div class="llenar">
                 <div class="formfield">
                     <h1>Nombre del Empleado</h1>
                     <input type="text" formControlName="name" placeholder="Nombre del Empleado" required>
                 </div>
-                <div class="error-message">
+                <div *ngIf="isInvalid('name')" class="error-message">
                     Debes colocar un nombre
                 </div>
 
                 <div class="formfield">
                     <h1>Salario por Hora</h1>
-                    <input type="text" formControlName="hourlyRate" placeholder="Salario por Hora" required>
+                    <input type="text" formControlName="hourlyWage" placeholder="Salario por Hora" required>
                 </div>
-                <div class="error-message">
+                <div *ngIf="isInvalid('hourlyWage')" class="error-message">
                     Debes colocar un salario por hora válido
                 </div>
 
@@ -22,7 +22,7 @@
                     <h1>Horas Trabajadas</h1>
                     <input type="text" formControlName="hoursWorked" placeholder="Horas Trabajadas" required>
                 </div>
-                <div class="error-message">
+                <div *ngIf="isInvalid('hoursWorked')" class="error-message">
                     Debes colocar las horas trabajadas
                 </div>
 
@@ -30,17 +30,25 @@
                     <h1>Horas Extras Trabajadas</h1>
                     <input type="text" formControlName="overtimeHours" placeholder="Horas Extras Trabajadas" required>
                 </div>
-                <div class="error-message">
+                <div *ngIf="isInvalid('overtimeHours')" class="error-message">
                     Debes colocar las horas extras trabajadas
                 </div>
             </div>
 
             <div class="buttonmenu">
-                <button type="submit" class="login">Enviar</button>
+                <button type="submit" class="login" [disabled]="employeeForm.invalid">Enviar</button>
             </div>
 
-            <div class="error-message">
-                ERROR
+            <div *ngIf="loginErrorMessage" class="error-message">
+                {{ loginErrorMessage }}
+            </div>
+
+            <div *ngIf="salaryResult" class="results">
+                <h2>Resultados del Cálculo del Salario</h2>
+                <p>Salario Regular: {{ salaryResult.regularSalary | currency }}</p>
+                <p>Salario por Horas Extras: {{ salaryResult.overtimeSalary | currency }}</p>
+                <p>Deducciones: {{ salaryResult.deductions | currency }}</p>
+                <p>Salario Neto: {{ salaryResult.netSalary | currency }}</p>
             </div>
         </form>
     </section>

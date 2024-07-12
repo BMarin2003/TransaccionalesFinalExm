@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { SalaryCalculationResponse } from '../../models/salary-calculation-response';
+import { SalaryCalculationRequest } from '../../models/salary-calculation-request';
 
 @Component({
   selector: 'app-datos-form',
@@ -37,5 +38,21 @@ export class DatosFormComponent {
     return control
       ? control.invalid && (control.dirty || control.touched)
       : false;
+  }
+
+  onSubmit(): void {
+    if (this.employeeForm.valid) {
+      const formValue = this.employeeForm.value;
+      const request: SalaryCalculationRequest = {
+        name: formValue.name,
+        hourlyWage: parseFloat(formValue.hourlyWage),
+        hoursWorked: parseInt(formValue.hoursWorked, 10),
+        overtimeHours: parseInt(formValue.overtimeHours, 10),
+      };
+
+      this.loginErrorMessage = null;
+    } else {
+      this.loginErrorMessage = 'Please fill in all required fields correctly.';
+    }
   }
 }
