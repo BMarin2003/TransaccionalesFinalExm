@@ -1,0 +1,38 @@
+.datos-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.llenar {
+  margin-bottom: 20px;
+}
+
+.formfield {
+  margin-bottom: 15px;
+}
+
+.formfield h1 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.formfield input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.buttonmenu {
+  text-align: center;
+}
+
+.buttonmenu .login {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
